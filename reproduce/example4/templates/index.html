@@ -26,8 +26,17 @@
 
 {% block content %}
 <div class="container">
+
+    {% for message in get_flashed_messages() %}
+    <div class="alert alert-warning">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        {{ message }}
+    </div>
+    {% endfor %}
+
     <div class="page-header">
         <h1>Hello, {% if name %}{{ name }}{% else %}Stranger{% endif %}!</h1>
+        <h1>{% if email %}Your UofT email is {{ email }}{% endif %}</h1>
         {{ wtf.quick_form(form) }}
     </div>
 </div>
